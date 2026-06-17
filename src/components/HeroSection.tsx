@@ -14,7 +14,7 @@ export default function HeroSection() {
           priority
         />
       </div>
-      <h1 className="ec-title">It's Easy To Grow Your Business</h1>
+      <h1 className="ec-title">It&apos;s Easy To Grow Your Business</h1>
       <div className="ec-tagline">Business Navigation Hub</div>
     </header>
   );

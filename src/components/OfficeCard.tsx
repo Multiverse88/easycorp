@@ -38,7 +38,10 @@ export default function OfficeCard({ office }: { office: Office }) {
         observer.observe(mapContainerRef.current);
       }
     } else {
-      setIsMapLoaded(true);
+      // Tunggu render cycle berikutnya agar tidak synchronous
+      setTimeout(() => {
+        setIsMapLoaded(true);
+      }, 0);
     }
 
     return () => {

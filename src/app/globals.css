@@ -524,7 +524,12 @@ body {
   }
 
   body {
-    background-attachment: scroll;
+    background-attachment: scroll; /* Optimal for mobile */
+  }
+  
+  .ec-layout::before,
+  .ec-layout::after {
+    display: none; /* Matakan glow corners berat di mobile */
   }
 
   .ec-plane {
@@ -532,22 +537,30 @@ body {
     height: 120px;
     padding: 12px;
     margin-bottom: 0;
+    animation: none; /* Matakan float animation */
   }
 
   .ec-title {
     font-size: 28px;
     letter-spacing: 1.5px;
     margin-top: -10px;
+    animation: none; /* Matakan fade up/shimmer berat */
+    background: #0f172a; /* Fallback flat color buat text */
+    -webkit-text-fill-color: initial;
   }
 
   .ec-tagline {
     font-size: 9.5px;
     letter-spacing: 2.5px;
     margin-top: 10px;
+    animation: none;
   }
 
   .ec-hero::after {
     margin-top: 10px;
+    animation: none; /* Matakan shimmerLine */
+    width: 48px;
+    opacity: 0.6;
   }
 
   .ec-grid-container {
@@ -569,6 +582,8 @@ body {
     padding: 10px;
     gap: 4px;
     border-radius: 12px;
+    backdrop-filter: none; /* Terlalu berat di low-end */
+    -webkit-backdrop-filter: none;
   }
 
   .ec-card-logo-container {

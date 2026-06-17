@@ -13,18 +13,40 @@ gsap.registerPlugin(useGSAP);
 
 export default function Home() {
   useGSAP(() => {
-    // Initial entrance animations
-    gsap.fromTo(
-      ".ec-card",
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, delay: 0.1, ease: "power2.out" }
-    );
-    
-    gsap.fromTo(
-      ".office-card",
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, delay: 0.2, ease: "power2.out" }
-    );
+    // Use matchMedia to optimize animations for mobile
+    const mm = gsap.matchMedia();
+
+    // Desktop: full animations with heavy effects
+    mm.add("(min-width: 769px)", () => {
+      gsap.fromTo(
+        ".ec-card",
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, delay: 0.1, ease: "power2.out" }
+      );
+      
+      gsap.fromTo(
+        ".office-card",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, delay: 0.2, ease: "power2.out" }
+      );
+    });
+
+    // Mobile: lighter, faster animations
+    mm.add("(max-width: 768px)", () => {
+      gsap.fromTo(
+        ".ec-card",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.4, stagger: 0.05, delay: 0.1, ease: "power2.out" }
+      );
+      
+      gsap.fromTo(
+        ".office-card",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, stagger: 0.05, delay: 0.15, ease: "power2.out" }
+      );
+    });
+
+    return () => mm.revert(); // Cleanup
   }, []);
 
   useEffect(() => {

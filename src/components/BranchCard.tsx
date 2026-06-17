@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 type BranchProps = {
   branch: {
@@ -25,7 +26,14 @@ export default function BranchCard({ branch }: BranchProps) {
         <span className="ec-arrow">↗</span>
         <div className="ec-card-header">
           <div className="ec-card-logo-container">
-            <img src={branch.logo} alt={branch.name} className="ec-card-logo" />
+            <Image
+              src={branch.logo}
+              alt={branch.name}
+              className="ec-card-logo"
+              width={110}
+              height={50}
+              loading="lazy"
+            />
           </div>
         </div>
         <div className="ec-card-body">
