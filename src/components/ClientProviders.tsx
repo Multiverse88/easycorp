@@ -26,19 +26,10 @@ export default function ClientProviders({ children }: { children: React.ReactNod
       );
     });
 
-    // Mobile: lighter, faster animations
+    // Mobile: disable animations for instant render (optimizes Speed Index)
     mm.add('(max-width: 768px)', () => {
-      gsap.fromTo(
-        '[data-animate="card"]',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.4, stagger: 0.05, delay: 0.1, ease: 'power2.out' }
-      );
-
-      gsap.fromTo(
-        '[data-animate="office"]',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.3, stagger: 0.05, delay: 0.15, ease: 'power2.out' }
-      );
+      gsap.set('[data-animate="card"]', { opacity: 1, y: 0 });
+      gsap.set('[data-animate="office"]', { opacity: 1, y: 0 });
     });
 
     return () => mm.revert();

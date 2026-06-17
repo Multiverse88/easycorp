@@ -32,7 +32,7 @@ export default function OfficeCard({ office }: { office: Office }) {
             }
           });
         },
-        { rootMargin: '150px' }
+        { rootMargin: '0px' }
       );
 
       if (mapContainerRef.current) {
