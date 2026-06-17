@@ -10,8 +10,8 @@ export default function HeroSection() {
           src="/logos/easy-corp.webp"
           alt="Easy Corp"
           className={styles.ecLogoImg}
-          width={200}
-          height={200}
+          width={215}
+          height={215}
           priority
         />
       </div>
