@@ -19,6 +19,9 @@ const bebasNeue = Bebas_Neue({
 export const metadata: Metadata = {
   title: "Easy Corp — Hub Website",
   description: "Pusat navigasi layanan Easy Corp: Easy Tax, Easy Office, Easy Legal, Easy Branding, Easy Accounting, Easy ISO, dan Easy Press.",
+  icons: {
+    icon: "/logos/Logo EC (1).webp",
+  },
 };
 
 export default function RootLayout({
