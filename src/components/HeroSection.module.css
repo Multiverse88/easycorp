@@ -1,0 +1,182 @@
+/* ─── Hero Section ──────────────────────────── */
+.ecHero {
+  text-align: center;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Red accent divider below tagline */
+.ecHero::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c01818 40%, transparent);
+  margin: 14px auto 0;
+  border-radius: 2px;
+  opacity: 0.7;
+  animation: shimmerLine 3s ease-in-out infinite;
+}
+
+@keyframes shimmerLine {
+  0%, 100% { width: 48px; opacity: 0.6; }
+  50%       { width: 72px; opacity: 1; }
+}
+
+.ecPlane {
+  width: 210px;
+  height: 210px;
+  margin: 0 auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 16px;
+  position: relative;
+  animation: entranceFadeUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards, floatLogo 6s ease-in-out infinite 1s;
+  opacity: 0;
+  transition: filter 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Multi-layer glow behind logo */
+.ecPlane::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(192,24,24,0.22) 0%, rgba(192,24,24,0.08) 50%, transparent 72%);
+  animation: logoHalo 4s ease-in-out infinite alternate;
+}
+
+.ecPlane::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,24,24,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+@keyframes logoHalo {
+  from { opacity: 0.7; transform: scale(0.96); }
+  to   { opacity: 1;   transform: scale(1.04); }
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes entranceFadeUp {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.ecLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(192,24,24,0.20));
+  position: relative;
+  z-index: 1;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+}
+
+.ecPlane:hover .ecLogoImg {
+  transform: scale(1.06) rotate(2deg);
+  filter: drop-shadow(0 8px 24px rgba(192,24,24,0.32));
+}
+
+.ecTitle {
+  font-family: var(--font-title);
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, #0f172a 0%, #1e293b 30%, #334155 50%, #1e293b 70%, #0f172a 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0;
+  margin-top: -20px;
+  animation: entranceFadeUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards, titleShimmer 5s linear infinite;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+@keyframes titleShimmer {
+  from { background-position: 200% center; }
+  to   { background-position: -200% center; }
+}
+
+.ecTagline {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 18px;
+  position: relative;
+  animation: entranceFadeUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+/* ─── Responsive — Tablet ───────────────────── */
+@media (max-width: 768px) {
+  .ecPlane {
+    width: 160px;
+    height: 160px;
+    padding: 14px;
+  }
+
+  .ecTitle {
+    font-size: 38px;
+    margin-top: -14px;
+  }
+
+  .ecTagline {
+    font-size: 10.5px;
+    letter-spacing: 3px;
+    margin-top: 14px;
+  }
+}
+
+/* ─── Responsive — Mobile ───────────────────── */
+@media (max-width: 480px) {
+  .ecPlane {
+    width: 120px;
+    height: 120px;
+    padding: 12px;
+    margin-bottom: 0;
+    animation: none;
+  }
+
+  .ecTitle {
+    font-size: 28px;
+    letter-spacing: 1.5px;
+    margin-top: -10px;
+    animation: none;
+    background: #0f172a;
+    -webkit-text-fill-color: initial;
+  }
+
+  .ecTagline {
+    font-size: 9.5px;
+    letter-spacing: 2.5px;
+    margin-top: 10px;
+    animation: none;
+  }
+
+  .ecHero::after {
+    margin-top: 10px;
+    animation: none;
+    width: 48px;
+    opacity: 0.6;
+  }
+}

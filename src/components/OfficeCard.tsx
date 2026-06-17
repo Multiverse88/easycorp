@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useMemo } from 'react';
+import styles from './OfficeCard.module.css';
 
 type Office = {
   name: string;
@@ -38,7 +39,6 @@ export default function OfficeCard({ office }: { office: Office }) {
         observer.observe(mapContainerRef.current);
       }
     } else {
-      // Tunggu render cycle berikutnya agar tidak synchronous
       setTimeout(() => {
         setIsMapLoaded(true);
       }, 0);
@@ -68,27 +68,27 @@ export default function OfficeCard({ office }: { office: Office }) {
   }, [office.city]);
 
   return (
-    <div className={`office-card ${office.isHQ ? 'is-hq' : ''}`}>
-      <div ref={mapContainerRef} className="map-container">
+    <div className={`${styles.officeCard} ${office.isHQ ? styles.isHq : ''}`} data-animate="office">
+      <div ref={mapContainerRef} className={styles.mapContainer}>
         {isMapLoaded ? (
           <iframe
             src={office.iframeSrc}
-            className="map-iframe"
+            className={styles.mapIframe}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
           />
         ) : (
-          <div className="map-placeholder">
-            <div className="map-grid-overlay"></div>
-            <div className="loading-shimmer"></div>
+          <div className={styles.mapPlaceholder}>
+            <div className={styles.mapGridOverlay}></div>
+            <div className={styles.loadingShimmer}></div>
           </div>
         )}
-        <div className="map-gradient-top" />
-        <div className="map-gradient-bottom" />
+        <div className={styles.mapGradientTop} />
+        <div className={styles.mapGradientBottom} />
 
-        <span className={`map-badge ${office.isHQ ? 'map-badge--hq' : 'map-badge--branch'}`}>
-          {office.isHQ && <span className="badge-dot" />}
+        <span className={`${styles.mapBadge} ${office.isHQ ? styles.mapBadgeHq : styles.mapBadgeBranch}`}>
+          {office.isHQ && <span className={styles.badgeDot} />}
           {office.isHQ ? 'HQ' : 'Cabang'}
         </span>
 
@@ -97,7 +97,7 @@ export default function OfficeCard({ office }: { office: Office }) {
             href={office.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="maps-pill"
+            className={styles.mapsPill}
             title="Buka di Google Maps"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -110,25 +110,25 @@ export default function OfficeCard({ office }: { office: Office }) {
         )}
       </div>
 
-      <div className="card-body">
-        <div className="city-row">
-          <span className="city-dot" />
-          <span className="city-name">{office.name}</span>
+      <div className={styles.cardBody}>
+        <div className={styles.cityRow}>
+          <span className={styles.cityDot} />
+          <span className={styles.cityName}>{office.name}</span>
         </div>
 
-        <div className="address-block">
-          <p className="building-name">{office.building}</p>
-          <p className="street-line">{office.street}</p>
-          <p className="street-line muted">{office.city}</p>
+        <div className={styles.addressBlock}>
+          <p className={styles.buildingName}>{office.building}</p>
+          <p className={styles.streetLine}>{office.street}</p>
+          <p className={styles.streetLineMuted}>{office.city}</p>
         </div>
 
-        <div className="card-footer">
+        <div className={styles.cardFooter}>
           {office.directionsUrl && (
             <a
               href={office.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="directions-link"
+              className={styles.directionsLink}
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                 <path d="M3 12h18m0 0l-5-5m5 5l-5 5" />
@@ -136,8 +136,8 @@ export default function OfficeCard({ office }: { office: Office }) {
               Petunjuk Arah
             </a>
           )}
-          <span className="footer-spacer" />
-          <span className="footer-city-code">{cityCode}</span>
+          <span className={styles.footerSpacer} />
+          <span className={styles.footerCityCode}>{cityCode}</span>
         </div>
       </div>
     </div>

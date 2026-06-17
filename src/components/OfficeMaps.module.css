@@ -1,0 +1,91 @@
+/* ── Section wrapper ── */
+.ecOffices {
+  width: 100%;
+  max-width: 720px;
+  margin: 64px auto 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.officesHeader {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.officesEyebrow {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c01818;
+  margin: 0 0 6px;
+  opacity: 0.85;
+}
+
+.ecOfficesTitle {
+  font-family: var(--font-title);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
+
+.ecOfficesSubtitle {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-desc);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.officesDivider {
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c01818, transparent);
+  margin: 12px auto 0;
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* ── Grid ── */
+.ecOfficesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .ecOffices {
+    margin: 40px auto 12px;
+  }
+
+  .ecOfficesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .ecOffices {
+    margin: 24px auto 8px;
+  }
+
+  .ecOfficesTitle {
+    font-size: 22px;
+    letter-spacing: 1.5px;
+  }
+
+  .ecOfficesGrid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 12px;
+  }
+}

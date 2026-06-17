@@ -1,0 +1,396 @@
+/* ── Card shell ─────────────────────────── */
+.officeCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+
+/* HQ Card Variant - slightly larger and highlighted */
+.officeCard.isHq {
+  transform: scale(1.03);
+  border-color: rgba(192, 24, 24, 0.22);
+  box-shadow: 0 8px 30px -10px rgba(192, 24, 24, 0.12), var(--shadow-card);
+  z-index: 2;
+}
+
+.officeCard.isHq .mapContainer {
+  height: 175px;
+}
+
+.officeCard.isHq:hover {
+  transform: translateY(-8px) scale(1.06);
+  border-color: rgba(192, 24, 24, 0.35);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Top highlight line */
+.officeCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Red bottom accent bar */
+.officeCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent, #c01818, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 10;
+}
+
+.officeCard:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(192, 24, 24, 0.25);
+  box-shadow: var(--shadow-hover);
+}
+
+.officeCard:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Map ────────────────────────────────── */
+.mapContainer {
+  position: relative;
+  height: 155px;
+  overflow: hidden;
+  background: #d8e4f0;
+  flex-shrink: 0;
+}
+
+.mapIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.officeCard:hover .mapIframe {
+  transform: scale(1.06);
+}
+
+/* Gradients for readability */
+.mapGradientTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.22), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mapGradientBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to top, rgba(0,0,0,0.12), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── HQ / Branch badge ──────────────────── */
+.mapBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid transparent;
+  font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+.badgeDot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.mapBadgeHq {
+  background: rgba(192, 24, 24, 0.88);
+  color: #fff;
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: 0 2px 8px rgba(192,24,24,0.3);
+}
+
+.mapBadgeBranch {
+  background: rgba(15, 23, 42, 0.62);
+  color: rgba(255,255,255,0.88);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* ── Maps pill button ───────────────────── */
+.mapsPill {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 4px 11px 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.2px;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.mapsPill svg {
+  width: 12px;
+  height: 12px;
+  color: #c01818;
+}
+
+.mapsPill:hover {
+  background: #fff;
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.16);
+}
+
+/* ── Card Body ──────────────────────────── */
+.cardBody {
+  padding: 13px 15px 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* City row */
+.cityRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+
+.cityDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c01818;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2.5px rgba(192,24,24,0.16), 0 0 0 4px rgba(192,24,24,0.06);
+  animation: dotPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(192,24,24,0.18), 0 0 0 4px rgba(192,24,24,0.06); }
+  50%       { box-shadow: 0 0 0 3px rgba(192,24,24,0.24), 0 0 0 6px rgba(192,24,24,0.08); }
+}
+
+.cityName {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  color: #000;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Address block */
+.addressBlock {
+  padding-left: 14px;
+  border-left: 2px solid rgba(192,24,24,0.18);
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  transition: border-color 0.3s ease;
+}
+
+.officeCard:hover .addressBlock {
+  border-left-color: rgba(192,24,24,0.4);
+}
+
+.buildingName {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #000;
+  margin: 0;
+  letter-spacing: 0.1px;
+}
+
+.streetLine {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.streetLineMuted {
+  composes: streetLine;
+  opacity: 0.9;
+}
+
+/* Footer */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  padding-top: 9px;
+  border-top: 1px solid var(--border-default);
+  margin-top: auto;
+}
+
+.directionsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--accent-ec);
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: gap 0.25s ease, opacity 0.2s ease;
+}
+
+.directionsLink svg {
+  width: 13px;
+  height: 13px;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.directionsLink:hover {
+  opacity: 0.8;
+  gap: 8px;
+}
+
+.directionsLink:hover svg {
+  transform: translateX(3px);
+}
+
+.footerSpacer {
+  flex: 1;
+}
+
+.footerCityCode {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--accent-ec);
+  opacity: 0.25;
+  line-height: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* ── Map Placeholder ────────────────────── */
+.mapPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.mapGridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.6;
+}
+
+.loadingShimmer {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  border-top-color: #ff4d6d;
+  animation: spin 1s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Mobile Responsive ────── */
+@media (max-width: 768px) {
+  .officeCard.isHq {
+    transform: none;
+    box-shadow: var(--shadow-card);
+  }
+
+  .officeCard.isHq .mapContainer {
+    height: 155px;
+  }
+
+  .officeCard:hover,
+  .officeCard.isHq:hover {
+    transform: none;
+    border-color: var(--border-default);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Safe touch feedback */
+  .officeCard:active,
+  .officeCard.isHq:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  .officeCard:hover .mapIframe {
+    transform: none;
+  }
+}

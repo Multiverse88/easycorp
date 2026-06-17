@@ -1,0 +1,308 @@
+/* ─── Grid & Branch Cards ───────────────────── */
+.ecGridContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.ecGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 730px;
+  width: 100%;
+}
+
+.ecCardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  flex: 1 1 158px;
+  max-width: 168px;
+}
+
+.ecCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+  padding: 18px 14px;
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+
+.ecCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: radial-gradient(circle at 50% -10%, var(--glow, rgba(192,24,24,0.08)), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subtle inner top highlight */
+.ecCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ecCardShine {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transform: skewX(-25deg);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ecCard:hover .ecCardShine {
+  left: 150%;
+  transition: left 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ecCard:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--accent, rgba(192,24,24,0.3));
+  background-color: var(--bg-card-hover);
+  box-shadow: var(--shadow-hover);
+}
+
+.ecCard:hover::before {
+  opacity: 1;
+}
+
+/* ─── Card Content ──────────────────────────── */
+.ecCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.ecCardLogoContainer {
+  width: 100%;
+  max-width: 110px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ecCardLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.06));
+}
+
+.ecCard:hover .ecCardLogo {
+  transform: scale(1.06) translateY(-1px);
+  filter: drop-shadow(0 4px 12px var(--glow, rgba(192,24,24,0.22)));
+}
+
+.ecCardBody {
+  z-index: 2;
+}
+
+.ecCardName {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+}
+
+.ecCard:hover .ecCardName {
+  color: var(--accent, #c01818);
+}
+
+.ecCardDesc {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--text-desc);
+  line-height: 1.45;
+}
+
+/* ─── Arrow Icon ────────────────────────────── */
+.ecArrow {
+  position: absolute;
+  top: 12px;
+  right: 13px;
+  font-size: 13px;
+  color: var(--text-desc);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 2;
+}
+
+.ecCard:hover .ecArrow {
+  opacity: 1;
+  color: var(--accent, #c01818);
+  transform: translate(0, 0);
+}
+
+/* ─── Bottom Accent Bar ─────────────────────── */
+.ecAccentBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent, var(--accent, #c01818), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 3;
+}
+
+.ecCard:hover .ecAccentBar {
+  transform: scaleX(1);
+}
+
+/* ─── Responsive — Tablet ───────────────────── */
+@media (max-width: 768px) {
+  .ecGrid {
+    gap: 12px;
+  }
+
+  .ecCardLink {
+    flex: 1 1 145px;
+    max-width: 158px;
+  }
+
+  .ecCard {
+    height: 138px;
+    padding: 14px;
+  }
+
+  .ecCardLogoContainer {
+    width: 100%;
+    max-width: 95px;
+    height: 42px;
+  }
+
+  .ecGridContainer {
+    margin-bottom: 16px;
+  }
+}
+
+/* ─── Responsive — Mobile ───────────────────── */
+@media (max-width: 480px) {
+  .ecGridContainer {
+    margin-bottom: 12px;
+  }
+
+  .ecGrid {
+    gap: 10px;
+    padding: 0;
+  }
+
+  .ecCardLink {
+    flex: 1 1 calc(50% - 6px);
+    max-width: calc(50% - 6px);
+  }
+
+  .ecCard {
+    height: 118px;
+    padding: 10px;
+    gap: 4px;
+    border-radius: 12px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .ecCardLogoContainer {
+    width: 100%;
+    max-width: 85px;
+    height: 38px;
+  }
+
+  .ecCardName {
+    font-size: 14.5px;
+    margin-bottom: 2px;
+  }
+
+  .ecCardDesc {
+    font-size: 11.5px;
+  }
+
+  .ecArrow {
+    top: 8px;
+    right: 8px;
+    font-size: 12px;
+    opacity: 0.5;
+    transform: translate(0, 0);
+  }
+
+  .ecCard:hover {
+    transform: none;
+  }
+
+  .ecCard:hover .ecCardLogo {
+    transform: none;
+  }
+
+  .ecCard:hover .ecArrow {
+    opacity: 0.5;
+    color: var(--text-desc);
+  }
+
+  .ecCard:hover .ecAccentBar {
+    transform: scaleX(0);
+  }
+
+  .ecCard:hover::before {
+    opacity: 0;
+  }
+
+  .ecCard:active {
+    transform: scale(0.97);
+    background-color: var(--bg-card-hover);
+    border-color: var(--accent);
+  }
+}
