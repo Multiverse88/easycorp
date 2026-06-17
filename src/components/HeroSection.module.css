@@ -39,30 +39,7 @@
   transition: filter 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Multi-layer glow behind logo */
-.ecPlane::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(192,24,24,0.22) 0%, rgba(192,24,24,0.08) 50%, transparent 72%);
-  animation: logoHalo 4s ease-in-out infinite alternate;
-}
 
-.ecPlane::after {
-  content: '';
-  position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(192,24,24,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-@keyframes logoHalo {
-  from { opacity: 0.7; transform: scale(0.96); }
-  to   { opacity: 1;   transform: scale(1.04); }
-}
 
 @keyframes floatLogo {
   0%, 100% { transform: translateY(0); }
@@ -150,27 +127,33 @@
 /* ─── Responsive — Mobile ───────────────────── */
 @media (max-width: 480px) {
   .ecPlane {
-    width: 135px;
-    height: 135px;
-    padding: 12px;
+    width: 140px;
+    height: 140px;
+    padding: 10px;
     margin-bottom: 0;
     animation: none;
+    opacity: 1;
   }
 
   .ecTitle {
-    font-size: 28px;
+    font-size: 30px;
     letter-spacing: 1.5px;
     margin-top: -10px;
     animation: none;
-    background: #0f172a;
-    -webkit-text-fill-color: initial;
+    opacity: 1;
+    background: linear-gradient(120deg, #0f172a 0%, #1e293b 30%, #334155 50%, #1e293b 70%, #0f172a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
   }
 
   .ecTagline {
-    font-size: 9.5px;
+    font-size: 10px;
     letter-spacing: 2.5px;
     margin-top: 10px;
     animation: none;
+    opacity: 1;
   }
 
   .ecHero::after {

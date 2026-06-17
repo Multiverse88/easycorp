@@ -70,7 +70,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-  max-width: 730px;
+  max-width: 750px;
   width: 100%;
 }
 
@@ -110,8 +110,20 @@
     margin-bottom: 12px;
   }
 
+  .ecGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
   .ecFooter {
     font-size: 10px;
     padding-top: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .ecGrid {
+    gap: 8px;
   }
 }

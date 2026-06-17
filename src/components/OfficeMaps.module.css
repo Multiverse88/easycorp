@@ -66,7 +66,17 @@
   }
 
   .ecOfficesGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecOfficesGrid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
     gap: 12px;
   }
 }
@@ -84,8 +94,6 @@
   .ecOfficesGrid {
     grid-template-columns: 1fr;
     max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
     gap: 12px;
   }
 }

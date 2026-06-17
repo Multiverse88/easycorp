@@ -31,8 +31,8 @@ export default function BranchCard({ branch }: BranchProps) {
               src={branch.logo}
               alt={branch.name}
               className={styles.ecCardLogo}
-              width={125}
-              height={65}
+              width={180}
+              height={90}
               loading="lazy"
             />
           </div>
