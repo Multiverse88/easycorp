@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Bar chart with upward trending line representing tax growth -->
+  <rect x="20" y="55" width="14" height="25" rx="4" fill="#f5c518" />
+  <rect x="43" y="35" width="14" height="45" rx="4" fill="#f5c518" />
+  <rect x="66" y="15" width="14" height="65" rx="4" fill="#f5c518" />
+  <path d="M15 50 L38 32 L60 42 L85 18" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  <polygon points="85 18 75 18 85 28" fill="#ffffff" />
+</svg>

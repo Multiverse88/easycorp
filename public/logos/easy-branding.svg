@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Pen-tool anchor node and creative branding waves representing graphic design -->
+  <path d="M25 75 C30 50, 40 30, 75 25" stroke="#f56a00" stroke-width="8" stroke-linecap="round" />
+  <path d="M25 75 C50 70, 70 60, 75 25" stroke="#f56a00" stroke-width="4" stroke-linecap="round" opacity="0.5" />
+  <rect x="68" y="18" width="14" height="14" rx="3" fill="#ffffff" stroke="#f56a00" stroke-width="4" />
+  <circle cx="25" cy="75" r="8" fill="#f56a00" />
+</svg>

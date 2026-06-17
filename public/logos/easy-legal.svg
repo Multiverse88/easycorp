@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Minimalist shield with a checkmark representing legal compliance -->
+  <path d="M50 12 C65 12 80 17 80 17 L80 48 C80 68 65 83 50 88 C35 83 20 68 20 48 L20 17 C20 17 35 12 50 12 Z" fill="#c01818" />
+  <path d="M50 12 C50 12 35 17 20 17 L20 48 C20 68 35 83 50 88 Z" fill="#9a1313" />
+  <path d="M38 50 L47 59 L62 38" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

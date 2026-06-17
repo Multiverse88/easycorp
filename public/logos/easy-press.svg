@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Megaphone broadcasting waves representing news release -->
+  <path d="M25 40 L45 40 L65 25 L65 75 L45 60 L25 60 Z" fill="#1d9e75" />
+  <path d="M25 40 L25 60 L20 60 C17 60 15 58 15 55 L15 45 C15 42 17 40 20 40 Z" fill="#146f52" />
+  <path d="M75 35 C82 43, 82 57, 75 65" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+  <path d="M85 25 C97 38, 97 62, 85 75" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.5" />
+</svg>
